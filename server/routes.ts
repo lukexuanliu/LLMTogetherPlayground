@@ -17,8 +17,25 @@ const generationRequestSchema = z.object({
     stop: z.string().nullable(),
     frequency_penalty: z.number().min(-2).max(2),
   }),
-  apiKey: z.string().min(1, "API key is required"),
+  // apiKey is now optional as we'll use the one from environment variables by default
+  apiKey: z.string().optional(),
 });
+
+// Helper function to validate API key
+const getValidApiKey = (providedKey?: string): string => {
+  // First check if a key was provided in the request (for override or testing)
+  if (providedKey && providedKey.trim().length > 0) {
+    return providedKey;
+  }
+  
+  // Then check environment variable
+  const envApiKey = process.env.TOGETHER_API_KEY;
+  if (!envApiKey || envApiKey.trim().length === 0) {
+    throw new Error("API key not found. Please set TOGETHER_API_KEY in .env file or provide in request.");
+  }
+  
+  return envApiKey;
+};
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API endpoint to handle LLM generation requests
@@ -34,7 +51,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       }
       
-      const { prompt, parameters, apiKey } = validationResult.data;
+      const { prompt, parameters, apiKey: requestApiKey } = validationResult.data;
+      
+      // Get valid API key (from request or environment)
+      let apiKey;
+      try {
+        apiKey = getValidApiKey(requestApiKey);
+      } catch (error) {
+        return res.status(400).json({ error: (error as Error).message });
+      }
       
       // Prepare request to Together.ai API
       const requestBody = {

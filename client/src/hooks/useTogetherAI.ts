@@ -12,7 +12,7 @@ export function useTogetherAI() {
   const generateCompletion = async (
     prompt: string,
     parameters: Parameters,
-    apiKey: string
+    apiKey?: string
   ) => {
     setLoading(true);
     setError(null);
@@ -35,11 +35,18 @@ export function useTogetherAI() {
     
     try {
       // Call API through our backend proxy to keep API key secure
-      const res = await apiRequest("POST", "/api/generate", {
+      // API key is optional now as it can be provided by server environment variables
+      const requestPayload: any = {
         prompt,
         parameters: requestBody,
-        apiKey,
-      });
+      };
+      
+      // Only include API key if provided
+      if (apiKey) {
+        requestPayload.apiKey = apiKey;
+      }
+      
+      const res = await apiRequest("POST", "/api/generate", requestPayload);
       
       const data = await res.json();
       const requestDuration = ((Date.now() - startTime) / 1000).toFixed(3);
