@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('LLM Together Playground', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3000');
+    await page.goto('http://localhost:3001');
   });
 
   test('should load the playground page', async ({ page }) => {
