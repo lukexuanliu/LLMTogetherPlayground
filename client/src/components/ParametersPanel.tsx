@@ -28,7 +28,7 @@ const ParametersPanel = ({ parameters, setParameters }: ParametersPanelProps) =>
               type="text"
               value={parameters.model}
               onChange={(e) => handleParameterChange("model", e.target.value)}
-              placeholder="Enter model name (e.g., meta-llama/Llama-2-70b-chat-hf)"
+              placeholder="Enter model name (e.g., meta-llama/Llama-3.3-70B-Instruct-Turbo)"
               className="w-full p-2 border border-[#DADCE0] rounded-md focus:ring-2 focus:ring-[#4285F4] focus:outline-none bg-white code-font text-sm"
             />
           </div>
@@ -36,26 +36,26 @@ const ParametersPanel = ({ parameters, setParameters }: ParametersPanelProps) =>
             Popular models: 
             <button 
               type="button" 
-              onClick={() => handleParameterChange("model", "meta-llama/Llama-2-70b-chat-hf")}
+              onClick={() => handleParameterChange("model", "meta-llama/Llama-3.3-70B-Instruct-Turbo")}
               className="ml-1 text-[#4285F4] hover:underline"
             >
-              Llama-2-70b
+              Meta Llama 3.3 70B Instruct Turbo
             </button>
             <span className="mx-1">•</span>
             <button 
               type="button" 
-              onClick={() => handleParameterChange("model", "mistralai/Mistral-7B-Instruct-v0.2")}
+              onClick={() => handleParameterChange("model", "meta-llama/Llama-3.3-70B-Instruct-Turbo-Free")}
               className="text-[#4285F4] hover:underline"
             >
-              Mistral-7B
+              Meta Llama 3.3 70B Free
             </button>
             <span className="mx-1">•</span>
             <button 
               type="button" 
-              onClick={() => handleParameterChange("model", "togethercomputer/llama-2-7b")}
+              onClick={() => handleParameterChange("model", "Qwen/QwQ-32B")}
               className="text-[#4285F4] hover:underline"
             >
-              Llama-2-7b
+              Qwen QwQ-32B
             </button>
           </div>
         </div>

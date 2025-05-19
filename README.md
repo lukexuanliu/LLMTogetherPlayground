@@ -1,0 +1,94 @@
+# LLM Together Playground
+
+A simple, no-frills web interface for interacting with various LLM models through the Together.ai API. This playground allows you to experiment with different models and parameters in a clean, intuitive interface.
+
+## Features
+
+- **Multiple Model Support**: Choose from various state-of-the-art language models
+- **Adjustable Parameters**: Fine-tune model behavior with parameters like temperature, top-p, and more
+- **Prompt History**: Keep track of your previous prompts and responses
+- **Real-time Interaction**: Get instant responses from the models
+- **Clean UI**: Simple and intuitive interface focused on usability
+
+## Available Models
+
+- **Meta Llama 3.3 70B Instruct Turbo** - High-performance instruction-tuned model
+- **Meta Llama 3.3 70B Instruct Turbo Free** - Free tier version of the 70B model
+- **Qwen QwQ-32B** - Powerful 32B parameter model from Qwen
+- Custom model support by entering the model name directly
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 16+ and npm
+- A Together.ai API key
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/LLMTogetherPlayground.git
+   cd LLMTogetherPlayground
+   ```
+
+2. Install dependencies for both client and server:
+   ```bash
+   # Install server dependencies
+   cd server
+   npm install
+   
+   # Install client dependencies
+   cd ../client
+   npm install
+   ```
+
+3. Set up environment variables:
+   - Copy `.env.example` to `.env`
+   - Add your Together.ai API key
+
+### Running the Application
+
+1. Start the server (from project root):
+   ```bash
+   cd server
+   npm run dev
+   ```
+
+2. In a new terminal, start the client:
+   ```bash
+   cd client
+   npm run dev
+   ```
+
+3. Open your browser and navigate to `http://localhost:3000`
+
+## Usage
+
+1. Enter your prompt in the input area
+2. Adjust model parameters as needed
+3. Click "Generate" to get a response
+4. View response in the output area
+5. Use the history panel to review previous interactions
+
+## Configuration
+
+You can customize the following parameters:
+
+- **Model**: Select from available models or enter a custom model name
+- **Max Tokens**: Maximum length of the generated response
+- **Temperature**: Controls randomness (lower = more focused, higher = more creative)
+- **Top P**: Nucleus sampling parameter
+- **Top K**: Limits the next token selection to the K most probable tokens
+- **Repetition Penalty**: Penalizes repeated tokens
+- **Frequency Penalty**: Reduces the likelihood of repeated phrases
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Together.ai](https://together.ai) for providing the API access to various LLM models
+- [React](https://reactjs.org/) and [Vite](https://vitejs.dev/) for the frontend framework
+- [Express](https://expressjs.com/) for the backend server

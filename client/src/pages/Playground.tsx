@@ -14,7 +14,7 @@ const Playground = () => {
   const [historyModalOpen, setHistoryModalOpen] = useState<boolean>(false);
   const [history, setHistory] = useState<History[]>([]);
   const [parameters, setParameters] = useState({
-    model: "meta-llama/Llama-2-70b-chat-hf",
+    model: "meta-llama/Llama-3.3-70B-Instruct-Turbo",
     max_tokens: 256,
     temperature: 0.7,
     top_p: 0.8,
