@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 215 7% 10%;
+  --muted: 215 5% 96%;
+  --muted-foreground: 215 4% 45%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 215 7% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 215 7% 10%;
+  --border: 215 2% 85%;
+  --input: 215 2% 85%;
+  --primary: 215 7% 18%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 217 89% 61%;
+  --secondary-foreground: 210 40% 98%;
+  --accent: 215 5% 96%;
+  --accent-foreground: 215 7% 10%;
+  --destructive: 0 72% 56%;
+  --destructive-foreground: 0 0% 100%;
+  --success: 137 56% 43%;
+  --success-foreground: 0 0% 100%;
+  --ring: 215 2% 85%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 0 0% 100%;
+  --foreground: 215 7% 10%;
+  --muted: 215 5% 96%;
+  --muted-foreground: 215 4% 45%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 215 7% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 215 7% 10%;
+  --border: 215 2% 85%;
+  --input: 215 2% 85%;
+  --primary: 215 7% 18%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 217 89% 61%;
+  --secondary-foreground: 210 40% 98%;
+  --accent: 215 5% 96%;
+  --accent-foreground: 215 7% 10%;
+  --destructive: 0 72% 56%;
+  --destructive-foreground: 0 0% 100%;
+  --success: 137 56% 43%;
+  --success-foreground: 0 0% 100%;
+  --ring: 215 2% 85%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Google Sans', sans-serif;
+  }
+
+  .code-font {
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-accent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
