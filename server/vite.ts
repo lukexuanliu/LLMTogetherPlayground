@@ -23,7 +23,9 @@ export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
     middlewareMode: true,
     hmr: { server },
-    allowedHosts: true,
+    host: true, // Enable listening on all network interfaces
+    strictPort: true, // Don't try other ports if the specified one is in use
+    port: 3000 // Default port, will be overridden by env.PORT
   };
 
   const vite = await createViteServer({
