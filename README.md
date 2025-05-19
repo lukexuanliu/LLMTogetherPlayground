@@ -83,6 +83,40 @@ You can customize the following parameters:
 - **Repetition Penalty**: Penalizes repeated tokens
 - **Frequency Penalty**: Reduces the likelihood of repeated phrases
 
+## Testing
+
+This project includes both unit/integration tests and end-to-end (E2E) tests.
+
+### Unit and Integration Tests
+
+Run the test suite with:
+
+```bash
+# Run all tests
+npm test
+
+# Run in watch mode
+npm run test:watch
+
+# Generate coverage report
+npm run test:coverage
+```
+
+### End-to-End Tests
+
+E2E tests are written using Playwright. See the [tests/README.md](tests/README.md) for detailed information.
+
+```bash
+# Run all E2E tests
+npm run test:e2e
+
+# Run E2E tests in UI mode
+npm run test:e2e:ui
+
+# Debug E2E tests
+npm run test:e2e:debug
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -92,3 +126,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Together.ai](https://together.ai) for providing the API access to various LLM models
 - [React](https://reactjs.org/) and [Vite](https://vitejs.dev/) for the frontend framework
 - [Express](https://expressjs.com/) for the backend server
+- [Playwright](https://playwright.dev/) for E2E testing
