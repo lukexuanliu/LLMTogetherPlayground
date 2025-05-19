@@ -43,8 +43,9 @@ app.use((req, res, next) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
 
+    console.error("Error occurred:", err);
     res.status(status).json({ message });
-    throw err;
+    // Don't throw after sending response
   });
 
   // importantly only setup vite in development and after
@@ -60,11 +61,7 @@ app.use((req, res, next) => {
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
   const port = 5000;
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
+  server.listen(port, "localhost", () => {
     log(`serving on port ${port}`);
   });
 })();
