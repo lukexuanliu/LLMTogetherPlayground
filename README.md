@@ -32,14 +32,8 @@ A simple, no-frills web interface for interacting with various LLM models throug
    cd LLMTogetherPlayground
    ```
 
-2. Install dependencies for both client and server:
+2. Install dependencies:
    ```bash
-   # Install server dependencies
-   cd server
-   npm install
-   
-   # Install client dependencies
-   cd ../client
    npm install
    ```
 
@@ -49,19 +43,12 @@ A simple, no-frills web interface for interacting with various LLM models throug
 
 ### Running the Application
 
-1. Start the server (from project root):
+1. Start the application from the repository root:
    ```bash
-   cd server
    npm run dev
    ```
 
-2. In a new terminal, start the client:
-   ```bash
-   cd client
-   npm run dev
-   ```
-
-3. Open your browser and navigate to `http://localhost:3000`
+2. Open your browser and navigate to `http://localhost:3000`
 
 ## Usage
 
