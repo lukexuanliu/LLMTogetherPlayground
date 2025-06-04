@@ -176,7 +176,13 @@ async function handleGeneration(req: Request, res: Response): Promise<void> {
  */
 async function handleGetHistory(req: Request, res: Response): Promise<void> {
   try {
-    const limit = req.query.limit ? parseInt(req.query.limit as string, 10) : api.MAX_HISTORY_ITEMS;
+    let limit = api.MAX_HISTORY_ITEMS;
+    if (req.query.limit !== undefined) {
+      const parsed = parseInt(req.query.limit as string, 10);
+      if (!Number.isNaN(parsed) && parsed > 0) {
+        limit = parsed;
+      }
+    }
     const history = await storage.getPromptHistory(limit);
     const response: HistorySuccessResponse = { history };
     res.status(200).json(response);
