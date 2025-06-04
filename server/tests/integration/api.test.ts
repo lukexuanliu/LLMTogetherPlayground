@@ -171,6 +171,44 @@ describe('API Integration Tests', () => {
       expect(response.status).toBe(200);
       expect(response.body.history.length).toBe(2);
     });
+
+    it('should use default limit when limit parameter is invalid', async () => {
+      // Add multiple history items
+      for (let i = 0; i < 3; i++) {
+        await storage.savePromptHistory({
+          prompt: `Test prompt ${i}`,
+          model: 'test-model',
+          timestamp: new Date(),
+          tokensUsed: 10,
+          parameters: {},
+          response: `Test response ${i}`
+        });
+      }
+
+      const response = await request(baseUrl).get('/api/history?limit=abc');
+
+      expect(response.status).toBe(200);
+      expect(response.body.history.length).toBe(3);
+    });
+
+    it('should use default limit when limit parameter is non-positive', async () => {
+      // Add multiple history items
+      for (let i = 0; i < 3; i++) {
+        await storage.savePromptHistory({
+          prompt: `Test prompt ${i}`,
+          model: 'test-model',
+          timestamp: new Date(),
+          tokensUsed: 10,
+          parameters: {},
+          response: `Test response ${i}`
+        });
+      }
+
+      const response = await request(baseUrl).get('/api/history?limit=0');
+
+      expect(response.status).toBe(200);
+      expect(response.body.history.length).toBe(3);
+    });
   });
   
   describe('DELETE /api/history', () => {
